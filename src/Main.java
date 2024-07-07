@@ -59,10 +59,6 @@ public class Main extends JPanel implements ActionListener, MouseListener {
                 imageLabel.setIcon(new ImageIcon(scaledImage));
                 Image image = ((ImageIcon) imageLabel.getIcon()).getImage();
                 bufferedImage = new BufferedImage(image.getWidth(null), image.getHeight(null), BufferedImage.TYPE_INT_ARGB);
-
-                Graphics2D g2d = bufferedImage.createGraphics();
-                g2d.drawImage(image, 0, 0, null);
-                g2d.dispose();
             }
         });
 
@@ -121,6 +117,11 @@ public class Main extends JPanel implements ActionListener, MouseListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        Image image = ((ImageIcon) imageLabel.getIcon()).getImage();
+        Graphics2D g2d = bufferedImage.createGraphics();
+        g2d.drawImage(image, 0, 0, null);
+        g2d.dispose();
+
         switch(e.getActionCommand()) {
             case "B&W" -> {
                 if(selectedImage != null) {
@@ -346,13 +347,7 @@ public class Main extends JPanel implements ActionListener, MouseListener {
                 ImageIcon imageIcon = new ImageIcon(imagePath);
                 Image scaledImage = imageIcon.getImage().getScaledInstance(imagePanel.getWidth(), imagePanel.getHeight(), Image.SCALE_SMOOTH);
                 imageLabel.setIcon(new ImageIcon(scaledImage));
-
-                Image image = ((ImageIcon) imageLabel.getIcon()).getImage();
                 bufferedImage = new BufferedImage(image.getWidth(null), image.getHeight(null), BufferedImage.TYPE_INT_ARGB);
-
-                Graphics2D g2d = bufferedImage.createGraphics();
-                g2d.drawImage(image, 0, 0, null);
-                g2d.dispose();
             }
         }
     }
